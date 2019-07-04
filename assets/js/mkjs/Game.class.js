@@ -1,12 +1,10 @@
 class Game
 {
 
-    constructor(gameGenerator, parentElement)
+    constructor(gameGenerator)
     {
 
         this.gameGenerator = gameGenerator;
-
-        this.parentElement = parentElement;
 
         this.currExercise = null;
 
@@ -37,14 +35,14 @@ class Game
 
     setLayout(){
 
-        this.parentElement.empty();
-        this.parentElement.append(this.layout);
         this.layout.append(this.exerciseOut);
         this.layout.append(this.answerTxt);
         this.layout.append(this.answerDelBtm);
         this.layout.append(this.answerBtb);
 
     }
+
+    getLayout(){ return this.layout; }
 
     setEventListeners(){
 
@@ -84,6 +82,7 @@ class Game
     }
 
     start(){
+        this.gameGenerator.resetPointer();
         this.setNextExercise();
     }
 

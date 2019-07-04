@@ -10,12 +10,15 @@ class Launcher
 
     testInit(){
 
-        var testClass = new TestClass("[value from launcher]");
+        var gameGenMult = new GameGeneratorMulipTable(5);
 
-        var gameGenMult = new GameGeneratorMulipTable(10);
-        gameGenMult.resetPointer();
+        var gameBox = $('#game_box');
 
-        var game = new Game(gameGenMult, $('#game_box'));
+        var game = new Game(gameGenMult);
+
+        gameBox.empty();
+        gameBox.append(game.getLayout());
+
         game.start();
 
     }
