@@ -27,7 +27,6 @@ class Launcher
         gameGenMult.resetPointer();
 
         var game = new Game(gameGenMult, $('#game_box'));
-       // game.setLayout();
 
     }
 
