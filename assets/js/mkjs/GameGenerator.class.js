@@ -1,4 +1,5 @@
 /**
+ * 
  * GameGenerator class to extend
  * to a concrete GameGenerator sub class
  * 
@@ -33,6 +34,11 @@ class GameGeneratorSuper
         var ex = this.exerciseList[this.listPointer];
         this.listPointer++;
         return ex;
+    }
+
+    resetPointer()
+    {
+        this.listPointer = 0;
     }
 
     addExercise(exercise)
