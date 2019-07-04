@@ -19,15 +19,22 @@ class Launcher
         gameBox.empty();
         gameBox.append(newGame.getLayout());
         
-        newGame.onFinish = () => this.makeSummary(gameGenMult);
+        newGame.onFinish = ( () => this.makeSummary(gameGenMult, gameBox) );
         newGame.start();
 
     }
 
-    makeSummary(gameGenerator)
+    makeSummary(gameGenerator, parentElement)
     {
         console.log(gameGenerator);
         console.log('summarised game');
+
+        parentElement.empty();
+
+        var sum = new Summary(gameGenerator, parentElement);
+
+        parentElement.append(sum.getLayout());
+
     }
 
 
