@@ -14,13 +14,20 @@ class Launcher
 
         var gameBox = $('#game_box');
 
-        var game = new Game(gameGenMult);
+        var newGame = new Game(gameGenMult);
 
         gameBox.empty();
-        gameBox.append(game.getLayout());
+        gameBox.append(newGame.getLayout());
+        
+        newGame.onFinish = () => this.makeSummary(gameGenMult);
+        newGame.start();
 
-        game.start();
+    }
 
+    makeSummary(gameGenerator)
+    {
+        console.log(gameGenerator);
+        console.log('summarised game');
     }
 
 

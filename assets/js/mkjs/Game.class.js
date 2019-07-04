@@ -18,6 +18,8 @@ class Game
 
         this.answerDelBtm = null;
 
+        this.onFinish = null;
+
         this.init();
     }
 
@@ -46,9 +48,9 @@ class Game
 
     setEventListeners(){
 
-        this.answerDelBtm.on('click', ()=> this.answerTxt.val('') );
+        this.answerDelBtm.on('click', () => this.answerTxt.val('') );
 
-        this.answerBtb.on('click', ()=> this.handleAnswer() );
+        this.answerBtb.on('click', () => this.handleAnswer() );
 
     }
 
@@ -88,8 +90,11 @@ class Game
 
     end(){
         console.log('ended game');
-        console.log(this.gameGenerator);
         this.answerBtb.remove();
+
+
+        if(this.onFinish == null)throw 'no stepout method defined for game.[onFinished]';
+        this.onFinish();
     }
 
 }
