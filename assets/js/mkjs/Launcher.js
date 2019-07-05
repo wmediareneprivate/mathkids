@@ -18,6 +18,7 @@ class Launcher
 
         gameBox.empty();
         gameBox.append(newGame.getLayout());
+        newGame.setSelectorEventListeners();
         
         newGame.onFinish = ( () => this.makeSummary(gameGenMult, gameBox) );
         newGame.start();

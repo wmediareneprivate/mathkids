@@ -19,3 +19,24 @@ body{
     background: #c7c7c7;
 
 }
+
+.keyboard_key{
+
+    height: 30px;
+
+    width: 30px;
+
+    display: block;
+
+    align-content: center;
+
+    background-color: aqua;
+
+    margin: 5px;
+
+}
+
+.keyboard_key:hover{
+
+    cursor: pointer
+}

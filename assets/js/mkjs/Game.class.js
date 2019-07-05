@@ -18,6 +18,8 @@ class Game
 
         this.answerDelBtm = null;
 
+        this.keyboard = null;
+
         this.onFinish = null;
 
         this.init();
@@ -25,11 +27,15 @@ class Game
 
     init()
     {
+        this.keyboard = new KeyboardSimple();
+
         this.layout = $('<div id="game_layout" class="game_layout"></div>');
         this.exerciseOut = $('<div id="exercise_out" class="exercise_out"></div>');
         this.answerTxt = $('<input id="answer_txt" class="answer_txt"></div>');
         this.answerBtb = $('<input type="button" id="answer_btn" class="answer_btn" value="check in"></div>');
         this.answerDelBtm = $('<input type="button" id="answer_del_btn" class="answer_del_btn" value="x"></div>');
+
+
 
         this.setLayout();
         this.setEventListeners();
@@ -41,6 +47,7 @@ class Game
         this.layout.append(this.answerTxt);
         this.layout.append(this.answerDelBtm);
         this.layout.append(this.answerBtb);
+        this.layout.append(this.keyboard.getLayout());
 
     }
 
@@ -48,10 +55,25 @@ class Game
 
     setEventListeners(){
 
+        this.keyboard.onClickKey = (
+            (value) => this.handleKeyClick(value)
+        );
+
         this.answerDelBtm.on('click', () => this.answerTxt.val('') );
 
         this.answerBtb.on('click', () => this.handleAnswer() );
 
+    }
+
+    setSelectorEventListeners(){
+
+        this.keyboard.setSelectorEventListeners();
+
+    }
+
+    handleKeyClick(keyValue){
+        var newVal = this.answerTxt.val()+keyValue;
+        this.answerTxt.val(newVal);
     }
 
     handleAnswer()
