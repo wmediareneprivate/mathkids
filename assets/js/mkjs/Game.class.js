@@ -46,8 +46,8 @@ class Game
         this.layout.append(this.exerciseOut);
         this.layout.append(this.answerTxt);
         this.layout.append(this.answerDelBtm);
-        this.layout.append(this.answerBtb);
         this.layout.append(this.keyboard.getLayout());
+        this.layout.append(this.answerBtb);
 
     }
 
@@ -55,8 +55,8 @@ class Game
 
     setEventListeners(){
 
-        this.keyboard.onClickKey = (
-            (value) => this.handleKeyClick(value)
+        this.keyboard.onClickNumberKeyFunc = (
+            (value) => this.handleNumberKeyClick(value)
         );
 
         this.answerDelBtm.on('click', () => this.answerTxt.val('') );
@@ -71,7 +71,7 @@ class Game
 
     }
 
-    handleKeyClick(keyValue){
+    handleNumberKeyClick(keyValue){
         var newVal = this.answerTxt.val()+keyValue;
         this.answerTxt.val(newVal);
     }
@@ -82,9 +82,6 @@ class Game
         var answ = this.answerTxt.val();
 
         this.currExercise.answer = answ;
-
-        console.log('you gave an answer by method : '+answ );
-        console.log(this.currExercise);
 
         this.setNextExercise();
     }
@@ -111,10 +108,8 @@ class Game
     }
 
     end(){
-        console.log('ended game');
+        
         this.answerBtb.remove();
-
-
         if(this.onFinish == null)throw 'no stepout method defined for game.[onFinished]';
         this.onFinish();
     }

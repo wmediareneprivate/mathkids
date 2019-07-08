@@ -20,15 +20,22 @@ body{
 
 }
 
+.main_nav_box{
+    display: flex;
+}
+
+
+.keyboard{
+
+    display: flex;
+
+}
+
 .keyboard_key{
 
     height: 30px;
 
     width: 30px;
-
-    display: block;
-
-    align-content: center;
 
     background-color: aqua;
 
@@ -37,6 +44,25 @@ body{
 }
 
 .keyboard_key:hover{
+
+    cursor: pointer
+}
+
+.game_start_btn{
+
+    flex-grow: 1;
+
+    height: 30px;
+
+    width: 80px;
+
+    background-color: rgb(51, 255, 0);
+
+    margin: 5px;
+
+}
+
+.game_start_btn:hover{
 
     cursor: pointer
 }

@@ -1,9 +1,9 @@
 class Summary
 {
 
-    constructor(gameGenerator)
+    constructor(game)
     {
-        this.gameGenerator = gameGenerator;
+        this.gameGenerator = game.gameGenerator;
 
         this.layout = null;
 

@@ -1,40 +1,51 @@
 class Launcher
 {
-    constructor(){}
+    constructor()
+    {
+        this.mainLayout = new MainLayout();
+    }
 
     start(){
 
-        this.testInit();
+        this.setEventListener();
     }
 
 
-    testInit(){
+    setEventListener(){
 
-        var gameGenMult = new GameGeneratorMulipTable(5);
+        this.mainLayout.gameMulipBtn.on('click', () => this.startGameMultip() )
 
-        var gameBox = $('#game_box');
+    }
 
-        var newGame = new Game(gameGenMult);
+    startGameMultip(){
 
-        gameBox.empty();
-        gameBox.append(newGame.getLayout());
+        var gameGen = new GameGeneratorMulipTable(5);
+        var newGame = new Game(gameGen);
+
+        this.setNewGameToLayout(newGame);
+
+    }
+
+
+    setNewGameToLayout(newGame){
+
+        this.mainLayout.gameBox.empty();
+        this.mainLayout.gameBox.append(newGame.getLayout());
         newGame.setSelectorEventListeners();
         
-        newGame.onFinish = ( () => this.makeSummary(gameGenMult, gameBox) );
+        newGame.onFinish = ( () => this.makeSummary(newGame) );
         newGame.start();
 
     }
 
-    makeSummary(gameGenerator, parentElement)
+    makeSummary(game)
     {
-        console.log(gameGenerator);
-        console.log('summarised game');
 
-        parentElement.empty();
+        this.mainLayout.gameBox.empty();
 
-        var sum = new Summary(gameGenerator, parentElement);
+        var sum = new Summary(game);
 
-        parentElement.append(sum.getLayout());
+        this.mainLayout.gameBox.append(sum.getLayout());
 
     }
 

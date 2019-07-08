@@ -4,7 +4,7 @@ class KeyboardSuper
     constructor(){
 
         this.layout = null;
-        this.onClickKey = null;
+        this.onClickNumberKeyFunc = null;
 
         this.init();
     }
@@ -30,16 +30,16 @@ class KeyboardSuper
     setSelectorEventListeners(){
 
         $('.keyboard_key').on('click', (e) => {
-            this.doOnKeyClick( $(e.currentTarget).html() );
+            this.doOnNumberKeyClick( $(e.currentTarget).html() );
         } );
     }
 
 
-    doOnKeyClick(elemValue){
+    doOnNumberKeyClick(elemValue){
 
-        if(this.onClickKey == null)throw 'call [onClickKey] was not set';
+        if(this.onClickNumberKeyFunc == null)throw 'call [onClickNumberKey] was not set';
 
-        this.onClickKey(elemValue);
+        this.onClickNumberKeyFunc(elemValue);
 
     }
 }
